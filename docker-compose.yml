@@ -1,0 +1,15 @@
+services:
+  kitnet-sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: kitnet-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Your_password123
+    ports:
+      - "14333:1433"
+    restart: unless-stopped
+    volumes:
+      - kitnet_sql_data:/var/opt/mssql
+
+volumes:
+  kitnet_sql_data:
